@@ -125,6 +125,28 @@
 .animate-line-grow { animation: line-grow 1s ease-out both; transform-origin: left; }
 .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
 
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-slide-up { animation: slide-up 0.6s ease-out both; }
+.animate-bounce-slow { animation: bounce-slow 3s ease-in-out infinite; }
+.animate-shimmer { animation: shimmer 3s linear infinite; background-size: 200% 100%; }
+.animate-rotate-slow { animation: rotate-slow 20s linear infinite; }
+
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
 .delay-300 { animation-delay: 300ms; }
@@ -133,6 +155,35 @@
 .delay-600 { animation-delay: 600ms; }
 .delay-700 { animation-delay: 700ms; }
 .delay-800 { animation-delay: 800ms; }
+.delay-1000 { animation-delay: 1000ms; }
+
+/* Design 4: Emerald Forge */
+:root {
+  --d4-bg: 160 10% 5%;
+  --d4-surface: 160 8% 9%;
+  --d4-border: 160 6% 18%;
+  --d4-accent: 160 84% 39%;
+  --d4-text: 160 10% 95%;
+  --d4-text-dim: 160 5% 55%;
+}
+
+/* Design 5: Royal Steel */
+:root {
+  --d5-bg: 230 15% 6%;
+  --d5-surface: 230 12% 10%;
+  --d5-border: 230 10% 20%;
+  --d5-accent: 45 100% 50%;
+  --d5-text: 230 10% 96%;
+  --d5-text-dim: 230 8% 55%;
+}
 
 /* Smooth scroll */
 html { scroll-behavior: smooth; }
+
+/* Intersection observer animations */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Video overlay */
+.video-overlay { position: relative; }
+.video-overlay::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8)); pointer-events: none; }

@@ -65,7 +65,7 @@ const InquiryForm = ({ accentColor, bgColor, borderColor, textDimColor }: { acce
         </div>
       ) : (
         <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
-          <input placeholder="Вашето име *" required className="px-5 py-4 text-sm focus:outline-none focus:ring-2 transition-shadow" style={{ ...inputStyle, focusRingColor: accentColor }} />
+          <input placeholder="Вашето име *" required className="px-5 py-4 text-sm focus:outline-none focus:ring-2 transition-shadow" style={inputStyle} />
           <input type="email" placeholder="Имейл *" required className="px-5 py-4 text-sm focus:outline-none" style={inputStyle} />
           <input placeholder="Телефон" className="px-5 py-4 text-sm focus:outline-none" style={inputStyle} />
           <select className="px-5 py-4 text-sm focus:outline-none" style={inputStyle}>

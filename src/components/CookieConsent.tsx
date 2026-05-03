@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const CookieConsent = () => {
   const [visible, setVisible] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const accepted = localStorage.getItem("etalsyle-cookies");
@@ -26,23 +28,15 @@ const CookieConsent = () => {
       >
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <div className="flex-1">
-            <p className="text-sm font-semibold text-white mb-1">🍪 Бисквитки</p>
-            <p className="text-xs text-white/60 leading-relaxed">
-              Използваме бисквитки за подобряване на вашето потребителско изживяване. Продължавайки да използвате сайта, вие се съгласявате с нашата политика за бисквитки.
-            </p>
+            <p className="text-sm font-semibold text-white mb-1">🍪 {t.cookies}</p>
+            <p className="text-xs text-white/60 leading-relaxed">{t.cookieConsent}</p>
           </div>
           <div className="flex gap-2 shrink-0">
-            <button
-              onClick={accept}
-              className="px-6 py-2.5 bg-white text-black text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-white/90 transition-colors"
-            >
-              Приемам
+            <button onClick={accept} className="px-6 py-2.5 bg-white text-black text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-white/90 transition-colors">
+              {t.cookieAccept}
             </button>
-            <button
-              onClick={accept}
-              className="px-4 py-2.5 border border-white/20 text-white/70 text-xs uppercase tracking-wider rounded-lg hover:bg-white/10 transition-colors"
-            >
-              Настройки
+            <button onClick={accept} className="px-4 py-2.5 border border-white/20 text-white/70 text-xs uppercase tracking-wider rounded-lg hover:bg-white/10 transition-colors">
+              {t.cookieSettings}
             </button>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface FooterProps {
   accentColor: string;
   bgColor: string;
@@ -92,9 +94,9 @@ const Footer = ({ accentColor, bgColor, surfaceColor, borderColor, textDimColor,
     <div className="flex flex-col md:flex-row justify-between items-center px-8 lg:px-16 py-6 text-xs uppercase tracking-widest" style={{ color: textDimColor, borderTop: `1px solid ${borderColor}` }}>
       <span>© 2026 Etalsyle — CNC Router Solutions</span>
       <div className="flex gap-6 mt-2 md:mt-0">
-        <a href="#" className="hover:opacity-80">Поверителност</a>
-        <a href="#" className="hover:opacity-80">Условия</a>
-        <a href="#" className="hover:opacity-80">Бисквитки</a>
+        <Link to="/privacy" className="hover:opacity-80">Поверителност</Link>
+        <Link to="/terms" className="hover:opacity-80">Условия</Link>
+        <Link to="/cookies" className="hover:opacity-80">Бисквитки</Link>
       </div>
     </div>
   </footer>

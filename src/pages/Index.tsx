@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 import cncHero from "@/assets/cnc-hero.jpg";
 import cncMaterials from "@/assets/cnc-materials.jpg";
 import cncWorkshop from "@/assets/cnc-workshop.jpg";
@@ -13,7 +15,21 @@ import CookieConsent from "@/components/CookieConsent";
 import CallButton from "@/components/CallButton";
 import Footer from "@/components/Footer";
 
-/* ===== SHARED DATA ===== */
+/* ===== LANGUAGE SWITCHER ===== */
+const LanguageSwitcher = ({ borderColor = "rgba(255,255,255,0.2)" }: { borderColor?: string }) => {
+  const { lang, setLang } = useLanguage();
+  return (
+    <button
+      onClick={() => setLang(lang === "bg" ? "en" : "bg")}
+      className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded border hover:bg-white/10 transition-all shrink-0"
+      style={{ borderColor }}
+    >
+      <span className="text-base leading-none">{lang === "bg" ? "🇬🇧" : "🇧🇬"}</span>
+      {lang === "bg" ? "EN" : "BG"}
+    </button>
+  );
+};
+
 const NAV_ITEMS = ["Услуги", "За нас", "Партньори", "Галерия", "Контакти"];
 const PHONE = "+359888123456";
 
@@ -54,31 +70,39 @@ const Reveal = ({ children, className = "" }: { children: React.ReactNode; class
 /* ===== INQUIRY FORM ===== */
 const InquiryForm = ({ accentColor, bgColor, borderColor, textDimColor }: { accentColor: string; bgColor: string; borderColor: string; textDimColor: string }) => {
   const [sent, setSent] = useState(false);
+  const [accepted, setAccepted] = useState(false);
+  const { t } = useLanguage();
   const inputStyle = { background: bgColor, border: `1px solid ${borderColor}`, color: "#fff" };
   return (
     <div id="inquiry" className="scroll-mt-24">
       {sent ? (
         <div className="text-center py-20 animate-scale-in">
           <div className="text-6xl mb-4">✓</div>
-          <p className="text-2xl font-bold">Запитването е изпратено!</p>
-          <p className="mt-2" style={{ color: textDimColor }}>Ще се свържем с вас в рамките на 24 часа.</p>
+          <p className="text-2xl font-bold">{t.sent}</p>
+          <p className="mt-2" style={{ color: textDimColor }}>{t.sentSub}</p>
         </div>
       ) : (
-        <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
-          <input placeholder="Вашето име *" required className="px-5 py-4 text-sm focus:outline-none focus:ring-2 transition-shadow" style={inputStyle} />
-          <input type="email" placeholder="Имейл *" required className="px-5 py-4 text-sm focus:outline-none" style={inputStyle} />
-          <input placeholder="Телефон" className="px-5 py-4 text-sm focus:outline-none" style={inputStyle} />
+        <form onSubmit={(e) => { e.preventDefault(); if (accepted) setSent(true); }} className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
+          <input placeholder={t.name} required className="px-5 py-4 text-sm focus:outline-none focus:ring-2 transition-shadow" style={inputStyle} />
+          <input type="email" placeholder={t.email} required className="px-5 py-4 text-sm focus:outline-none" style={inputStyle} />
+          <input placeholder={t.phone} className="px-5 py-4 text-sm focus:outline-none" style={inputStyle} />
           <select className="px-5 py-4 text-sm focus:outline-none" style={inputStyle}>
-            <option>Изберете материал</option>
-            <option>Еталбонд</option>
+            <option>{t.selectMaterial}</option>
+            <option>{t.etalbond}</option>
             <option>HPL</option>
             <option>MDF / Шперплат</option>
-            <option>Керамика / Ламинат</option>
-            <option>Друго</option>
+            <option>{t.ceramics}</option>
+            <option>{t.other}</option>
           </select>
-          <textarea placeholder="Опишете вашето запитване... *" rows={5} required className="px-5 py-4 text-sm focus:outline-none md:col-span-2 resize-none" style={inputStyle} />
-          <button type="submit" className="md:col-span-2 py-4 text-sm font-bold uppercase tracking-wider hover:opacity-90 transition-all hover:scale-[1.02] active:scale-100" style={{ background: accentColor, color: bgColor }}>
-            ✉ Изпрати запитване
+          <textarea placeholder={t.describe} rows={5} required className="px-5 py-4 text-sm focus:outline-none md:col-span-2 resize-none" style={inputStyle} />
+          <label className="md:col-span-2 flex items-start gap-3 cursor-pointer select-none group">
+            <input type="checkbox" checked={accepted} onChange={(e) => setAccepted(e.target.checked)} className="mt-1 size-5 accent-current shrink-0 cursor-pointer" style={{ accentColor }} required />
+            <span className="text-xs leading-relaxed" style={{ color: textDimColor }}>
+              {t.accept} — <Link to="/terms" className="underline hover:opacity-70" style={{ color: accentColor }}>{t.terms}</Link> & <Link to="/privacy" className="underline hover:opacity-70" style={{ color: accentColor }}>{t.privacy}</Link>
+            </span>
+          </label>
+          <button type="submit" className="md:col-span-2 py-4 text-sm font-bold uppercase tracking-wider hover:opacity-90 transition-all hover:scale-[1.02] active:scale-100 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100" disabled={!accepted} style={{ background: accentColor, color: bgColor }}>
+            ✉ {t.sendInquiry}
           </button>
         </form>
       )}
@@ -151,7 +175,10 @@ const Design1 = () => {
           <div className="flex-1 items-center justify-center gap-8 px-8 hidden lg:flex font-mono-jb text-xs font-medium tracking-widest" style={{ color: c.textDim }}>
             {NAV_ITEMS.map(item => <a key={item} href={`#${item}`} className="hover:opacity-100 transition-colors" onMouseEnter={e => (e.currentTarget.style.color = c.accent)} onMouseLeave={e => (e.currentTarget.style.color = c.textDim)}>{item}</a>)}
           </div>
-          <a href="#inquiry" className="shrink-0 flex items-center px-6 lg:px-8 font-mono-jb text-sm font-bold tracking-wider hover:opacity-90 transition-opacity" style={{ background: c.accent, color: c.bg }}>Изпрати запитване</a>
+          <div className="flex items-center shrink-0" style={{ borderLeft: `1px solid ${c.border}` }}>
+            <div className="px-4"><LanguageSwitcher borderColor={c.border} /></div>
+            <a href="#inquiry" className="shrink-0 flex items-center px-6 lg:px-8 h-full font-mono-jb text-sm font-bold tracking-wider hover:opacity-90 transition-opacity" style={{ background: c.accent, color: c.bg }}>Изпрати запитване</a>
+          </div>
         </div>
       </nav>
 
@@ -272,7 +299,10 @@ const Design2 = () => {
         <nav className="hidden lg:flex gap-10 text-sm font-semibold tracking-widest uppercase" style={{ color: c.textDim }}>
           {NAV_ITEMS.map(item => <a key={item} href={`#${item}`} className="transition-colors" onMouseEnter={e => (e.currentTarget.style.color = c.accent)} onMouseLeave={e => (e.currentTarget.style.color = c.textDim)}>{item}</a>)}
         </nav>
-        <a href="#inquiry" className="font-oswald text-lg px-8 py-3 uppercase tracking-wider font-bold hover:opacity-90 transition-opacity" style={{ background: c.accent, color: c.bg }}>Изпрати запитване</a>
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher borderColor={c.border} />
+          <a href="#inquiry" className="font-oswald text-lg px-8 py-3 uppercase tracking-wider font-bold hover:opacity-90 transition-opacity" style={{ background: c.accent, color: c.bg }}>Изпрати запитване</a>
+        </div>
       </header>
 
       <section className="flex flex-col lg:flex-row min-h-[85vh]">
@@ -360,7 +390,10 @@ const Design3 = () => {
         <nav className="hidden lg:flex gap-10 text-[0.65rem] uppercase tracking-[0.2em]" style={{ color: c.textDim }}>
           {NAV_ITEMS.map(item => <a key={item} href={`#${item}`} className="transition-colors" onMouseEnter={e => (e.currentTarget.style.color = c.accent)} onMouseLeave={e => (e.currentTarget.style.color = c.textDim)}>{item}</a>)}
         </nav>
-        <a href="#inquiry" className="text-[0.65rem] uppercase tracking-[0.15em] font-bold px-8 py-4 hover:opacity-90 transition-opacity" style={{ background: c.accent, color: c.bg }}>Изпрати запитване</a>
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher borderColor={c.border} />
+          <a href="#inquiry" className="text-[0.65rem] uppercase tracking-[0.15em] font-bold px-8 py-4 hover:opacity-90 transition-opacity" style={{ background: c.accent, color: c.bg }}>Изпрати запитване</a>
+        </div>
       </header>
 
       <section className="relative pt-24 pb-32 lg:pt-40 lg:pb-48 px-6 lg:px-12 overflow-hidden" style={{ borderBottom: `1px solid ${c.accent}30` }}>
@@ -471,7 +504,10 @@ const Design4 = () => {
         <div className="hidden lg:flex items-center gap-10 text-xs font-medium tracking-widest uppercase" style={{ color: c.textDim }}>
           {NAV_ITEMS.map(item => <a key={item} href={`#${item}`} className="transition-colors" onMouseEnter={e => (e.currentTarget.style.color = c.accent)} onMouseLeave={e => (e.currentTarget.style.color = c.textDim)}>{item}</a>)}
         </div>
-        <a href="#inquiry" className="px-6 py-2.5 text-xs font-bold uppercase tracking-wider rounded-full hover:opacity-90 transition-all" style={{ background: c.accent, color: c.bg }}>Изпрати запитване</a>
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher borderColor={c.border} />
+          <a href="#inquiry" className="px-6 py-2.5 text-xs font-bold uppercase tracking-wider rounded-full hover:opacity-90 transition-all" style={{ background: c.accent, color: c.bg }}>Изпрати запитване</a>
+        </div>
       </nav>
 
       <section className="pt-16 min-h-screen relative overflow-hidden flex items-center">
@@ -575,7 +611,10 @@ const Design5 = () => {
         <div className="hidden lg:flex items-center gap-10 text-xs font-medium tracking-widest uppercase" style={{ color: c.textDim }}>
           {NAV_ITEMS.map(item => <a key={item} href={`#${item}`} className="transition-colors relative group" onMouseEnter={e => (e.currentTarget.style.color = c.accent)} onMouseLeave={e => (e.currentTarget.style.color = c.textDim)}>{item}</a>)}
         </div>
-        <a href="#inquiry" className="px-6 py-3 text-xs font-bold uppercase tracking-wider hover:opacity-90 transition-all" style={{ background: `linear-gradient(135deg, ${c.accent}, #f59e0b)`, color: c.bg }}>Изпрати запитване</a>
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher borderColor={c.border} />
+          <a href="#inquiry" className="px-6 py-3 text-xs font-bold uppercase tracking-wider hover:opacity-90 transition-all" style={{ background: `linear-gradient(135deg, ${c.accent}, #f59e0b)`, color: c.bg }}>Изпрати запитване</a>
+        </div>
       </nav>
 
       <section className="pt-20 min-h-screen flex flex-col lg:flex-row">

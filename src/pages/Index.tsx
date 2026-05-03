@@ -299,7 +299,10 @@ const Design2 = () => {
         <nav className="hidden lg:flex gap-10 text-sm font-semibold tracking-widest uppercase" style={{ color: c.textDim }}>
           {NAV_ITEMS.map(item => <a key={item} href={`#${item}`} className="transition-colors" onMouseEnter={e => (e.currentTarget.style.color = c.accent)} onMouseLeave={e => (e.currentTarget.style.color = c.textDim)}>{item}</a>)}
         </nav>
-        <a href="#inquiry" className="font-oswald text-lg px-8 py-3 uppercase tracking-wider font-bold hover:opacity-90 transition-opacity" style={{ background: c.accent, color: c.bg }}>Изпрати запитване</a>
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher borderColor={c.border} />
+          <a href="#inquiry" className="font-oswald text-lg px-8 py-3 uppercase tracking-wider font-bold hover:opacity-90 transition-opacity" style={{ background: c.accent, color: c.bg }}>Изпрати запитване</a>
+        </div>
       </header>
 
       <section className="flex flex-col lg:flex-row min-h-[85vh]">
@@ -387,7 +390,10 @@ const Design3 = () => {
         <nav className="hidden lg:flex gap-10 text-[0.65rem] uppercase tracking-[0.2em]" style={{ color: c.textDim }}>
           {NAV_ITEMS.map(item => <a key={item} href={`#${item}`} className="transition-colors" onMouseEnter={e => (e.currentTarget.style.color = c.accent)} onMouseLeave={e => (e.currentTarget.style.color = c.textDim)}>{item}</a>)}
         </nav>
-        <a href="#inquiry" className="text-[0.65rem] uppercase tracking-[0.15em] font-bold px-8 py-4 hover:opacity-90 transition-opacity" style={{ background: c.accent, color: c.bg }}>Изпрати запитване</a>
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher borderColor={c.border} />
+          <a href="#inquiry" className="text-[0.65rem] uppercase tracking-[0.15em] font-bold px-8 py-4 hover:opacity-90 transition-opacity" style={{ background: c.accent, color: c.bg }}>Изпрати запитване</a>
+        </div>
       </header>
 
       <section className="relative pt-24 pb-32 lg:pt-40 lg:pb-48 px-6 lg:px-12 overflow-hidden" style={{ borderBottom: `1px solid ${c.accent}30` }}>
@@ -498,7 +504,10 @@ const Design4 = () => {
         <div className="hidden lg:flex items-center gap-10 text-xs font-medium tracking-widest uppercase" style={{ color: c.textDim }}>
           {NAV_ITEMS.map(item => <a key={item} href={`#${item}`} className="transition-colors" onMouseEnter={e => (e.currentTarget.style.color = c.accent)} onMouseLeave={e => (e.currentTarget.style.color = c.textDim)}>{item}</a>)}
         </div>
-        <a href="#inquiry" className="px-6 py-2.5 text-xs font-bold uppercase tracking-wider rounded-full hover:opacity-90 transition-all" style={{ background: c.accent, color: c.bg }}>Изпрати запитване</a>
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher borderColor={c.border} />
+          <a href="#inquiry" className="px-6 py-2.5 text-xs font-bold uppercase tracking-wider rounded-full hover:opacity-90 transition-all" style={{ background: c.accent, color: c.bg }}>Изпрати запитване</a>
+        </div>
       </nav>
 
       <section className="pt-16 min-h-screen relative overflow-hidden flex items-center">
@@ -602,7 +611,10 @@ const Design5 = () => {
         <div className="hidden lg:flex items-center gap-10 text-xs font-medium tracking-widest uppercase" style={{ color: c.textDim }}>
           {NAV_ITEMS.map(item => <a key={item} href={`#${item}`} className="transition-colors relative group" onMouseEnter={e => (e.currentTarget.style.color = c.accent)} onMouseLeave={e => (e.currentTarget.style.color = c.textDim)}>{item}</a>)}
         </div>
-        <a href="#inquiry" className="px-6 py-3 text-xs font-bold uppercase tracking-wider hover:opacity-90 transition-all" style={{ background: `linear-gradient(135deg, ${c.accent}, #f59e0b)`, color: c.bg }}>Изпрати запитване</a>
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher borderColor={c.border} />
+          <a href="#inquiry" className="px-6 py-3 text-xs font-bold uppercase tracking-wider hover:opacity-90 transition-all" style={{ background: `linear-gradient(135deg, ${c.accent}, #f59e0b)`, color: c.bg }}>Изпрати запитване</a>
+        </div>
       </nav>
 
       <section className="pt-20 min-h-screen flex flex-col lg:flex-row">

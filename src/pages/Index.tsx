@@ -15,7 +15,21 @@ import CookieConsent from "@/components/CookieConsent";
 import CallButton from "@/components/CallButton";
 import Footer from "@/components/Footer";
 
-/* ===== SHARED DATA ===== */
+/* ===== LANGUAGE SWITCHER ===== */
+const LanguageSwitcher = ({ borderColor = "rgba(255,255,255,0.2)" }: { borderColor?: string }) => {
+  const { lang, setLang } = useLanguage();
+  return (
+    <button
+      onClick={() => setLang(lang === "bg" ? "en" : "bg")}
+      className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded border hover:bg-white/10 transition-all shrink-0"
+      style={{ borderColor }}
+    >
+      <span className="text-base leading-none">{lang === "bg" ? "🇬🇧" : "🇧🇬"}</span>
+      {lang === "bg" ? "EN" : "BG"}
+    </button>
+  );
+};
+
 const NAV_ITEMS = ["Услуги", "За нас", "Партньори", "Галерия", "Контакти"];
 const PHONE = "+359888123456";
 

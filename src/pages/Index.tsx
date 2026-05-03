@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 import cncHero from "@/assets/cnc-hero.jpg";
 import cncMaterials from "@/assets/cnc-materials.jpg";
 import cncWorkshop from "@/assets/cnc-workshop.jpg";

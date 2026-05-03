@@ -56,31 +56,39 @@ const Reveal = ({ children, className = "" }: { children: React.ReactNode; class
 /* ===== INQUIRY FORM ===== */
 const InquiryForm = ({ accentColor, bgColor, borderColor, textDimColor }: { accentColor: string; bgColor: string; borderColor: string; textDimColor: string }) => {
   const [sent, setSent] = useState(false);
+  const [accepted, setAccepted] = useState(false);
+  const { t } = useLanguage();
   const inputStyle = { background: bgColor, border: `1px solid ${borderColor}`, color: "#fff" };
   return (
     <div id="inquiry" className="scroll-mt-24">
       {sent ? (
         <div className="text-center py-20 animate-scale-in">
           <div className="text-6xl mb-4">✓</div>
-          <p className="text-2xl font-bold">Запитването е изпратено!</p>
-          <p className="mt-2" style={{ color: textDimColor }}>Ще се свържем с вас в рамките на 24 часа.</p>
+          <p className="text-2xl font-bold">{t.sent}</p>
+          <p className="mt-2" style={{ color: textDimColor }}>{t.sentSub}</p>
         </div>
       ) : (
-        <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
-          <input placeholder="Вашето име *" required className="px-5 py-4 text-sm focus:outline-none focus:ring-2 transition-shadow" style={inputStyle} />
-          <input type="email" placeholder="Имейл *" required className="px-5 py-4 text-sm focus:outline-none" style={inputStyle} />
-          <input placeholder="Телефон" className="px-5 py-4 text-sm focus:outline-none" style={inputStyle} />
+        <form onSubmit={(e) => { e.preventDefault(); if (accepted) setSent(true); }} className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
+          <input placeholder={t.name} required className="px-5 py-4 text-sm focus:outline-none focus:ring-2 transition-shadow" style={inputStyle} />
+          <input type="email" placeholder={t.email} required className="px-5 py-4 text-sm focus:outline-none" style={inputStyle} />
+          <input placeholder={t.phone} className="px-5 py-4 text-sm focus:outline-none" style={inputStyle} />
           <select className="px-5 py-4 text-sm focus:outline-none" style={inputStyle}>
-            <option>Изберете материал</option>
-            <option>Еталбонд</option>
+            <option>{t.selectMaterial}</option>
+            <option>{t.etalbond}</option>
             <option>HPL</option>
             <option>MDF / Шперплат</option>
-            <option>Керамика / Ламинат</option>
-            <option>Друго</option>
+            <option>{t.ceramics}</option>
+            <option>{t.other}</option>
           </select>
-          <textarea placeholder="Опишете вашето запитване... *" rows={5} required className="px-5 py-4 text-sm focus:outline-none md:col-span-2 resize-none" style={inputStyle} />
-          <button type="submit" className="md:col-span-2 py-4 text-sm font-bold uppercase tracking-wider hover:opacity-90 transition-all hover:scale-[1.02] active:scale-100" style={{ background: accentColor, color: bgColor }}>
-            ✉ Изпрати запитване
+          <textarea placeholder={t.describe} rows={5} required className="px-5 py-4 text-sm focus:outline-none md:col-span-2 resize-none" style={inputStyle} />
+          <label className="md:col-span-2 flex items-start gap-3 cursor-pointer select-none group">
+            <input type="checkbox" checked={accepted} onChange={(e) => setAccepted(e.target.checked)} className="mt-1 size-5 accent-current shrink-0 cursor-pointer" style={{ accentColor }} required />
+            <span className="text-xs leading-relaxed" style={{ color: textDimColor }}>
+              {t.accept} — <Link to="/terms" className="underline hover:opacity-70" style={{ color: accentColor }}>{t.terms}</Link> & <Link to="/privacy" className="underline hover:opacity-70" style={{ color: accentColor }}>{t.privacy}</Link>
+            </span>
+          </label>
+          <button type="submit" className="md:col-span-2 py-4 text-sm font-bold uppercase tracking-wider hover:opacity-90 transition-all hover:scale-[1.02] active:scale-100 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100" disabled={!accepted} style={{ background: accentColor, color: bgColor }}>
+            ✉ {t.sendInquiry}
           </button>
         </form>
       )}

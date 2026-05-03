@@ -175,7 +175,10 @@ const Design1 = () => {
           <div className="flex-1 items-center justify-center gap-8 px-8 hidden lg:flex font-mono-jb text-xs font-medium tracking-widest" style={{ color: c.textDim }}>
             {NAV_ITEMS.map(item => <a key={item} href={`#${item}`} className="hover:opacity-100 transition-colors" onMouseEnter={e => (e.currentTarget.style.color = c.accent)} onMouseLeave={e => (e.currentTarget.style.color = c.textDim)}>{item}</a>)}
           </div>
-          <a href="#inquiry" className="shrink-0 flex items-center px-6 lg:px-8 font-mono-jb text-sm font-bold tracking-wider hover:opacity-90 transition-opacity" style={{ background: c.accent, color: c.bg }}>Изпрати запитване</a>
+          <div className="flex items-center shrink-0" style={{ borderLeft: `1px solid ${c.border}` }}>
+            <div className="px-4"><LanguageSwitcher borderColor={c.border} /></div>
+            <a href="#inquiry" className="shrink-0 flex items-center px-6 lg:px-8 h-full font-mono-jb text-sm font-bold tracking-wider hover:opacity-90 transition-opacity" style={{ background: c.accent, color: c.bg }}>Изпрати запитване</a>
+          </div>
         </div>
       </nav>
 

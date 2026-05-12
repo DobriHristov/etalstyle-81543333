@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const NotFound = () => {
-  const { t, lang, setLang } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center" style={{ background: "#121212", color: "#f4f4f5" }}>

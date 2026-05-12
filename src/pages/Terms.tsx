@@ -1,8 +1,9 @@
 import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { Link } from "react-router-dom";
 
 const Terms = () => {
-  const { t, lang, setLang } = useLanguage();
+  const { t, lang } = useLanguage();
 
   const contentBg = (
     <>
@@ -35,20 +36,18 @@ const Terms = () => {
   );
 
   return (
-    <div className="min-h-screen" style={{ background: "#09090a", color: "#f4f4f5" }}>
+    <div className="min-h-screen" style={{ background: "#121212", color: "#f4f4f5" }}>
       <nav className="fixed top-0 w-full z-50 flex items-center justify-between px-6 h-16" style={{ background: "rgba(9,9,10,0.95)", backdropFilter: "blur(12px)", borderBottom: "1px solid #27272a" }}>
-        <Link to="/" className="font-bold text-xl tracking-tighter uppercase">ETALSYLE<span style={{ color: "#00e5ff" }}>_</span></Link>
+        <Link to="/" className="font-bold text-xl tracking-tighter uppercase">ETALSYLE<span style={{ color: "#D67A1A" }}>_</span></Link>
         <div className="flex items-center gap-4">
-          <button onClick={() => setLang(lang === "bg" ? "en" : "bg")} className="px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded border border-white/20 hover:bg-white/10 transition-colors">
-            {lang === "bg" ? "EN" : "BG"}
-          </button>
+          <LanguageSwitcher accentColor="#D67A1A" bgColor="#121212" borderColor="#2a2a2a" textDimColor="#9a9088" />
         </div>
       </nav>
       <div className="pt-24 pb-16 px-6 max-w-3xl mx-auto animate-fade-in-up">
         <p className="text-xs uppercase tracking-widest mb-2 opacity-50">{t.lastUpdated}</p>
-        <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-8" style={{ color: "#00e5ff" }}>{t.termsTitle}</h1>
+        <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-8" style={{ color: "#D67A1A" }}>{t.termsTitle}</h1>
         {lang === "bg" ? contentBg : contentEn}
-        <Link to="/" className="inline-block mt-12 px-6 py-3 text-sm font-bold uppercase tracking-wider hover:opacity-90 transition-all" style={{ background: "#00e5ff", color: "#09090a" }}>
+        <Link to="/" className="inline-block mt-12 px-6 py-3 text-sm font-bold uppercase tracking-wider hover:opacity-90 transition-all" style={{ background: "#D67A1A", color: "#121212" }}>
           ← {t.backHome}
         </Link>
       </div>

@@ -16,7 +16,6 @@ const Footer = ({ accentColor, bgColor, borderColor, textDimColor, fontClass }: 
   const navItems = [
     { id: "services", label: t.services },
     { id: "about", label: t.about },
-    { id: "partners", label: t.partners },
     { id: "gallery", label: t.gallery },
     { id: "contacts", label: t.contacts },
   ];

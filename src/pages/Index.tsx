@@ -46,11 +46,45 @@ const Reveal = ({ children, className = "" }: { children: React.ReactNode; class
   return <div ref={ref} className={`reveal ${className}`}>{children}</div>;
 };
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+
 const InquiryForm = () => {
   const [sent, setSent] = useState(false);
   const [accepted, setAccepted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const { t } = useLanguage();
   const inputStyle = { background: C.bg, border: `1px solid ${C.border}`, color: "#fff" };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!accepted || loading) return;
+    setLoading(true);
+    setError(null);
+    const fd = new FormData(e.currentTarget);
+    try {
+      const res = await fetch(`${API_URL}/api/inquiry`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: fd.get("name"),
+          email: fd.get("email"),
+          phone: fd.get("phone"),
+          material: fd.get("material"),
+          message: fd.get("message"),
+          website: fd.get("website"), // honeypot
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) throw new Error(data.error || "Failed");
+      setSent(true);
+    } catch (err: any) {
+      setError(err.message || "Network error");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div id="inquiry" className="scroll-mt-24">
       {sent ? (
@@ -60,11 +94,11 @@ const InquiryForm = () => {
           <p className="mt-2" style={{ color: C.textDim }}>{t.sentSub}</p>
         </div>
       ) : (
-        <form onSubmit={(e) => { e.preventDefault(); if (accepted) setSent(true); }} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 max-w-3xl mx-auto">
-          <input placeholder={t.name} required className="px-4 sm:px-5 py-3 sm:py-4 text-sm focus:outline-none focus:ring-2" style={inputStyle} />
-          <input type="email" placeholder={t.email} required className="px-4 sm:px-5 py-3 sm:py-4 text-sm focus:outline-none" style={inputStyle} />
-          <input placeholder={t.phone} className="px-4 sm:px-5 py-3 sm:py-4 text-sm focus:outline-none" style={inputStyle} />
-          <select className="px-4 sm:px-5 py-3 sm:py-4 text-sm focus:outline-none" style={inputStyle}>
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 max-w-3xl mx-auto">
+          <input name="name" placeholder={t.name} required className="px-4 sm:px-5 py-3 sm:py-4 text-sm focus:outline-none focus:ring-2" style={inputStyle} />
+          <input name="email" type="email" placeholder={t.email} required className="px-4 sm:px-5 py-3 sm:py-4 text-sm focus:outline-none" style={inputStyle} />
+          <input name="phone" placeholder={t.phone} className="px-4 sm:px-5 py-3 sm:py-4 text-sm focus:outline-none" style={inputStyle} />
+          <select name="material" className="px-4 sm:px-5 py-3 sm:py-4 text-sm focus:outline-none" style={inputStyle}>
             <option>{t.selectMaterial}</option>
             <option>{t.etalbond}</option>
             <option>HPL</option>
@@ -72,15 +106,18 @@ const InquiryForm = () => {
             <option>{t.ceramics}</option>
             <option>{t.other}</option>
           </select>
-          <textarea placeholder={t.describe} rows={5} required className="px-4 sm:px-5 py-3 sm:py-4 text-sm focus:outline-none md:col-span-2 resize-none" style={inputStyle} />
+          <textarea name="message" placeholder={t.describe} rows={5} required className="px-4 sm:px-5 py-3 sm:py-4 text-sm focus:outline-none md:col-span-2 resize-none" style={inputStyle} />
+          {/* Honeypot — hidden from users, bots fill it */}
+          <input name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
           <label className="md:col-span-2 flex items-start gap-3 cursor-pointer select-none">
             <input type="checkbox" checked={accepted} onChange={(e) => setAccepted(e.target.checked)} className="mt-1 size-5 shrink-0 cursor-pointer" style={{ accentColor: C.accent }} required />
             <span className="text-xs leading-relaxed" style={{ color: C.textDim }}>
               {t.accept} — <Link to="/terms" className="underline hover:opacity-70" style={{ color: C.accent }}>{t.terms}</Link> & <Link to="/privacy" className="underline hover:opacity-70" style={{ color: C.accent }}>{t.privacy}</Link>
             </span>
           </label>
-          <button type="submit" className="md:col-span-2 py-4 text-sm font-bold uppercase tracking-wider hover:opacity-90 transition-all hover:scale-[1.02] active:scale-100 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100" disabled={!accepted} style={{ background: C.accent, color: C.bg }}>
-            ✉ {t.sendInquiry}
+          {error && <p className="md:col-span-2 text-sm text-red-400">⚠ {error}</p>}
+          <button type="submit" className="md:col-span-2 py-4 text-sm font-bold uppercase tracking-wider hover:opacity-90 transition-all hover:scale-[1.02] active:scale-100 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100" disabled={!accepted || loading} style={{ background: C.accent, color: C.bg }}>
+            {loading ? "..." : `✉ ${t.sendInquiry}`}
           </button>
         </form>
       )}

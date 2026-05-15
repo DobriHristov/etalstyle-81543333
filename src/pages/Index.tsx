@@ -63,7 +63,7 @@ const InquiryForm = () => {
     setError(null);
     const fd = new FormData(e.currentTarget);
     try {
-      const res = await fetch(`${API_URL}/api/inquiry`, {
+      const res = await fetch(`${API_URL}/api/send`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

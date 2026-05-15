@@ -89,8 +89,8 @@ app.post("/api/send", limiter, async (req, res) => {
 
     res.json({ ok: true });
   } catch (err) {
-    console.error("Send error:", err);
-    res.status(500).json({ ok: false, error: "Failed to send" });
+    console.error("✗ Send error:", err?.message, err?.code, err?.response);
+    res.status(500).json({ ok: false, error: err?.message || "Failed to send" });
   }
 });
 

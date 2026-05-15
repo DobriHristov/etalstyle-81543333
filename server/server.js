@@ -50,7 +50,7 @@ const isEmail = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 
 app.get("/health", (_req, res) => res.json({ ok: true }));
 
-app.post("/api/inquiry", limiter, async (req, res) => {
+app.post("/api/send", limiter, async (req, res) => {
   try {
     const { name, email, phone, material, message, website } = req.body || {};
 

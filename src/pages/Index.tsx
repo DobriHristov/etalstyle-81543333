@@ -255,9 +255,9 @@ const Index = () => {
         {menuOpen && (
           <div className="lg:hidden fixed inset-0 top-[68px] z-40 p-6 flex flex-col gap-5" style={{ background: C.bg }}>
             {NAV_ITEMS.map(item => (
-              <a key={item.id} href={`#${item.id}`} onClick={() => setMenuOpen(false)} className="font-oswald text-2xl uppercase tracking-wider" style={{ color: C.text }}>{item.label}</a>
+              <a key={item.id} href={`#${item.id}`} onClick={(e) => { e.preventDefault(); setMenuOpen(false); setTimeout(() => document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth", block: "start" }), 50); }} className="font-oswald text-2xl uppercase tracking-wider" style={{ color: C.text }}>{item.label}</a>
             ))}
-            <a href="#inquiry" onClick={() => setMenuOpen(false)} className="mt-4 font-oswald text-base px-6 py-3 uppercase tracking-wider font-bold text-center" style={{ background: C.accent, color: C.bg }}>{t.sendInquiry}</a>
+            <a href="#inquiry" onClick={(e) => { e.preventDefault(); setMenuOpen(false); setTimeout(() => document.getElementById("inquiry")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50); }} className="mt-4 font-oswald text-base px-6 py-3 uppercase tracking-wider font-bold text-center" style={{ background: C.accent, color: C.bg }}>{t.sendInquiry}</a>
           </div>
         )}
 

@@ -208,6 +208,7 @@ const Lightbox = ({ index, onClose, onPrev, onNext }: { index: number; onClose: 
 const Index = () => {
   const { t } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const NAV_ITEMS = [
     { id: "services", label: t.services },
@@ -230,14 +231,16 @@ const Index = () => {
 
       <div className="min-h-screen font-manrope overflow-x-hidden" style={{ background: C.bg, color: C.text }}>
         <header className="flex justify-between items-center px-4 sm:px-6 lg:px-8 py-4 sm:py-5 sticky top-0 z-50 gap-3" style={{ background: C.bg, borderBottom: `4px solid ${C.border}` }}>
-          <div className="font-oswald text-2xl sm:text-3xl lg:text-4xl tracking-tighter uppercase font-bold">Etalstyle</div>
-          <nav className="hidden lg:flex gap-8 xl:gap-10 text-sm font-semibold tracking-widest uppercase" style={{ color: C.textDim }}>
-            {NAV_ITEMS.map(item => (
-              <a key={item.id} href={`#${item.id}`} className="transition-colors"
-                onMouseEnter={e => (e.currentTarget.style.color = C.accent)}
-                onMouseLeave={e => (e.currentTarget.style.color = C.textDim)}>{item.label}</a>
-            ))}
-          </nav>
+          <div className="flex items-center gap-6 xl:gap-12 min-w-0">
+            <a href="#top" className="font-oswald text-2xl sm:text-3xl lg:text-4xl tracking-tighter uppercase font-bold shrink-0">Etalstyle</a>
+            <nav className="hidden lg:flex gap-6 xl:gap-9 text-sm font-semibold tracking-widest uppercase" style={{ color: C.textDim }}>
+              {NAV_ITEMS.map(item => (
+                <a key={item.id} href={`#${item.id}`} className="transition-colors"
+                  onMouseEnter={e => (e.currentTarget.style.color = C.accent)}
+                  onMouseLeave={e => (e.currentTarget.style.color = C.textDim)}>{item.label}</a>
+              ))}
+            </nav>
+          </div>
           <div className="flex items-center gap-2 sm:gap-3">
             <LanguageSwitcher accentColor={C.accent} bgColor={C.bg} borderColor={C.border} textDimColor={C.textDim} />
             <a href="#inquiry" className="hidden sm:inline-block font-oswald text-sm lg:text-lg px-4 lg:px-8 py-2.5 lg:py-3 uppercase tracking-wider font-bold hover:opacity-90 transition-opacity" style={{ background: C.accent, color: C.bg }}>{t.sendInquiry}</a>
@@ -322,8 +325,17 @@ const Index = () => {
 
         <section id="gallery" className="p-6 sm:p-10 lg:p-16" style={{ background: C.bg, borderTop: `4px solid ${C.border}` }}>
           <Reveal><h2 className="font-oswald text-3xl sm:text-4xl uppercase text-center mb-8 sm:mb-12">{t.galleryTitle}</h2></Reveal>
-          <GallerySection />
+          <GallerySection onOpen={setLightboxIndex} />
         </section>
+
+        {lightboxIndex !== null && (
+          <Lightbox
+            index={lightboxIndex}
+            onClose={() => setLightboxIndex(null)}
+            onPrev={() => setLightboxIndex(i => (i! - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length)}
+            onNext={() => setLightboxIndex(i => (i! + 1) % GALLERY_IMAGES.length)}
+          />
+        )}
 
         <section id="contacts" className="p-6 sm:p-10 lg:p-20" style={{ background: C.surface, borderTop: `4px solid ${C.border}` }}>
           <Reveal><h2 className="font-oswald text-3xl sm:text-4xl uppercase text-center mb-8 sm:mb-12">{t.contactsTitle}</h2></Reveal>

@@ -25,7 +25,7 @@ const Footer = ({ accentColor, bgColor, borderColor, textDimColor, fontClass }: 
       {/* Map */}
       <div className="w-full h-[350px] relative overflow-hidden">
         <iframe
-          title="Etalsyle Plovdiv"
+          title="Etalstyle Plovdiv"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47272.93218684474!2d24.710768!3d42.1497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14acd108bf68cfc3%3A0x398099a9003c550c!2sPlovdiv%2C%20Bulgaria!5e0!3m2!1sen!2s!4v1"
           className="w-full h-full border-0 grayscale contrast-125 opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
           loading="lazy"
@@ -84,7 +84,7 @@ const Footer = ({ accentColor, bgColor, borderColor, textDimColor, fontClass }: 
             </li>
             <li className="flex items-center gap-3">
               <span>✉️</span>
-              <a href="mailto:info@etalsyle.bg" className="hover:opacity-80 transition-opacity">info@etalsyle.bg</a>
+              <a href="mailto:info@etalstyle.bg" className="hover:opacity-80 transition-opacity">info@etalstyle.bg</a>
             </li>
             <li className="flex items-center gap-3">
               <span>🕐</span>

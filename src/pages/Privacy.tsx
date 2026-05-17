@@ -16,7 +16,7 @@ const Privacy = () => {
       <h2 className="text-xl font-bold mt-8 mb-4">4. Бисквитки</h2>
       <p className="mb-4 leading-relaxed opacity-80">Нашият уебсайт използва бисквитки за подобряване на потребителското изживяване. За повече информация, моля вижте нашата <Link to="/cookies" className="underline hover:opacity-70">Политика за бисквитки</Link>.</p>
       <h2 className="text-xl font-bold mt-8 mb-4">5. Вашите права</h2>
-      <p className="mb-4 leading-relaxed opacity-80">Имате право да поискате достъп, коригиране или изтриване на вашите лични данни. За упражняване на тези права, моля свържете се с нас на info@etalsyle.bg.</p>
+      <p className="mb-4 leading-relaxed opacity-80">Имате право да поискате достъп, коригиране или изтриване на вашите лични данни. За упражняване на тези права, моля свържете се с нас на info@etalstyle.bg.</p>
     </>
   );
 
@@ -31,7 +31,7 @@ const Privacy = () => {
       <h2 className="text-xl font-bold mt-8 mb-4">4. Cookies</h2>
       <p className="mb-4 leading-relaxed opacity-80">Our website uses cookies to improve user experience. For more information, please see our <Link to="/cookies" className="underline hover:opacity-70">Cookie Policy</Link>.</p>
       <h2 className="text-xl font-bold mt-8 mb-4">5. Your Rights</h2>
-      <p className="mb-4 leading-relaxed opacity-80">You have the right to request access, correction, or deletion of your personal data. To exercise these rights, please contact us at info@etalsyle.bg.</p>
+      <p className="mb-4 leading-relaxed opacity-80">You have the right to request access, correction, or deletion of your personal data. To exercise these rights, please contact us at info@etalstyle.bg.</p>
     </>
   );
 

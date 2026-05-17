@@ -6,7 +6,7 @@ const CookieConsent = () => {
   const { t } = useLanguage();
 
   useEffect(() => {
-    const accepted = localStorage.getItem("etalsyle-cookies");
+    const accepted = localStorage.getItem("etalstyle-cookies");
     if (!accepted) {
       const timer = setTimeout(() => setVisible(true), 1500);
       return () => clearTimeout(timer);
@@ -14,7 +14,7 @@ const CookieConsent = () => {
   }, []);
 
   const accept = () => {
-    localStorage.setItem("etalsyle-cookies", "true");
+    localStorage.setItem("etalstyle-cookies", "true");
     setVisible(false);
   };
 

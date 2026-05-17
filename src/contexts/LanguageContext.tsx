@@ -27,7 +27,7 @@ const translations = {
     tolerance: "0.01mm Толеранс",
     videoTitle: "Видео",
     aboutTitle: "За нас",
-    aboutDesc: "Etalsyle е водеща компания в CNC обработката на материали в Пловдив. С модерно оборудване и екип от опитни специалисти, гарантираме най-високо качество. Нашата мисия е индустриална прецизност за всеки проект.",
+    aboutDesc: "Etalstyle е водеща компания в CNC обработката на материали в Пловдив. С модерно оборудване и екип от опитни специалисти, гарантираме най-високо качество. Нашата мисия е индустриална прецизност за всеки проект.",
     partnersTitle: "Партньори",
     galleryTitle: "Галерия",
     contactsTitle: "Контакти & Запитване",
@@ -75,7 +75,7 @@ const translations = {
     addressLine2: "Пловдив 4000, България",
     workingHours: "Пон-Пет: 08:00 - 18:00",
     mapLabel: "Пловдив, България",
-    copyright: "© 2026 Etalsyle — CNC Router Solutions",
+    copyright: "© 2026 Etalstyle — CNC Router Solutions",
     navigation: "Навигация",
 
     // services list
@@ -120,7 +120,7 @@ const translations = {
     tolerance: "0.01mm Tolerance",
     videoTitle: "Video",
     aboutTitle: "About Us",
-    aboutDesc: "Etalsyle is a leading CNC material processing company in Plovdiv. With modern equipment and a team of experienced specialists, we guarantee the highest quality. Our mission is industrial precision for every project.",
+    aboutDesc: "Etalstyle is a leading CNC material processing company in Plovdiv. With modern equipment and a team of experienced specialists, we guarantee the highest quality. Our mission is industrial precision for every project.",
     partnersTitle: "Partners",
     galleryTitle: "Gallery",
     contactsTitle: "Contact & Inquiry",
@@ -163,7 +163,7 @@ const translations = {
     addressLine2: "Plovdiv 4000, Bulgaria",
     workingHours: "Mon-Fri: 08:00 - 18:00",
     mapLabel: "Plovdiv, Bulgaria",
-    copyright: "© 2026 Etalsyle — CNC Router Solutions",
+    copyright: "© 2026 Etalstyle — CNC Router Solutions",
     navigation: "Navigation",
 
     cncMilling: "CNC Milling",
@@ -203,13 +203,13 @@ const LanguageContext = createContext<LanguageContextType>({
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [lang, setLangState] = useState<Lang>(() => {
     if (typeof window === "undefined") return "bg";
-    const stored = localStorage.getItem("etalsyle-lang");
+    const stored = localStorage.getItem("etalstyle-lang");
     return stored === "en" || stored === "bg" ? stored : "bg";
   });
 
   const setLang = (l: Lang) => {
     setLangState(l);
-    try { localStorage.setItem("etalsyle-lang", l); } catch {}
+    try { localStorage.setItem("etalstyle-lang", l); } catch {}
   };
 
   useEffect(() => {

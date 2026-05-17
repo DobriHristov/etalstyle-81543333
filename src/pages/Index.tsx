@@ -204,7 +204,7 @@ const Index = () => {
 
       <div className="min-h-screen font-manrope overflow-x-hidden" style={{ background: C.bg, color: C.text }}>
         <header className="flex justify-between items-center px-4 sm:px-6 lg:px-8 py-4 sm:py-5 sticky top-0 z-50 gap-3" style={{ background: C.bg, borderBottom: `4px solid ${C.border}` }}>
-          <div className="font-oswald text-2xl sm:text-3xl lg:text-4xl tracking-tighter uppercase font-bold">Etalsyle</div>
+          <div className="font-oswald text-2xl sm:text-3xl lg:text-4xl tracking-tighter uppercase font-bold">Etalstyle</div>
           <nav className="hidden lg:flex gap-8 xl:gap-10 text-sm font-semibold tracking-widest uppercase" style={{ color: C.textDim }}>
             {NAV_ITEMS.map(item => (
               <a key={item.id} href={`#${item.id}`} className="transition-colors"

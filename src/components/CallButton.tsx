@@ -1,6 +1,6 @@
 const CallButton = () => (
   <a
-    href="tel:+359888123456"
+    href="tel:+359886313673"
     className="fixed bottom-24 right-6 z-[90] size-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 group animate-bounce-slow"
     style={{ background: "linear-gradient(135deg, #22c55e, #16a34a)" }}
     title="Обадете се"

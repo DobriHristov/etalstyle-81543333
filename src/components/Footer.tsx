@@ -80,7 +80,7 @@ const Footer = ({ accentColor, bgColor, borderColor, textDimColor, fontClass }: 
             </li>
             <li className="flex items-center gap-3">
               <span>📞</span>
-              <a href="tel:+359888123456" className="hover:opacity-80 transition-opacity">+359 886 31 36 73</a>
+              <a href="tel:+359886313673" className="hover:opacity-80 transition-opacity">+359 886 31 36 73</a>
             </li>
             <li className="flex items-center gap-3">
               <span>✉️</span>

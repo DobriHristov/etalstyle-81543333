@@ -44,7 +44,7 @@ jobs:
         run: npm run build
         env:
           # Use relative base so assets work on both user sites and project sites
-          VITE_BASE_URL: ./
+          VITE_BASE_URL: "/etalstyle-81543333"
 
       - name: Add .nojekyll
         run: touch ./dist/.nojekyll

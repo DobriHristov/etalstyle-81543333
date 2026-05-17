@@ -167,17 +167,43 @@ const StatsBar = () => {
   );
 };
 
-const GallerySection = () => (
+const GallerySection = ({ onOpen }: { onOpen: (i: number) => void }) => (
   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
     {GALLERY_IMAGES.map((img, i) => (
       <Reveal key={i}>
-        <div className="overflow-hidden group cursor-pointer" style={{ border: `1px solid ${C.border}` }}>
+        <div onClick={() => onOpen(i)} className="overflow-hidden group cursor-pointer" style={{ border: `1px solid ${C.border}` }}>
           <img src={img} alt={`Project ${i + 1}`} loading="lazy" className="w-full aspect-square object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
         </div>
       </Reveal>
     ))}
   </div>
 );
+
+const Lightbox = ({ index, onClose, onPrev, onNext }: { index: number; onClose: () => void; onPrev: () => void; onNext: () => void }) => {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "ArrowRight") onNext();
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose, onPrev, onNext]);
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 animate-fade-in" style={{ background: "rgba(0,0,0,0.95)" }} onClick={onClose}>
+      <button onClick={(e) => { e.stopPropagation(); onClose(); }} aria-label="Close" className="absolute top-4 right-4 size-12 flex items-center justify-center text-3xl hover:opacity-70 transition-opacity z-10" style={{ background: C.accent, color: C.bg }}>×</button>
+      <button onClick={(e) => { e.stopPropagation(); onPrev(); }} aria-label="Previous" className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 size-12 sm:size-14 flex items-center justify-center text-2xl hover:opacity-70 transition-opacity z-10" style={{ background: C.accent, color: C.bg }}>‹</button>
+      <button onClick={(e) => { e.stopPropagation(); onNext(); }} aria-label="Next" className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 size-12 sm:size-14 flex items-center justify-center text-2xl hover:opacity-70 transition-opacity z-10" style={{ background: C.accent, color: C.bg }}>›</button>
+      <img src={GALLERY_IMAGES[index]} alt={`Project ${index + 1}`} onClick={(e) => e.stopPropagation()} className="max-w-full max-h-full object-contain animate-scale-in" />
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 text-xs font-bold uppercase tracking-wider" style={{ background: C.accent, color: C.bg }}>{index + 1} / {GALLERY_IMAGES.length}</div>
+    </div>
+  );
+};
 
 const Index = () => {
   const { t } = useLanguage();

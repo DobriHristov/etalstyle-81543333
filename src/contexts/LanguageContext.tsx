@@ -18,8 +18,8 @@ const translations = {
     // hero
     industrialStandard: "Индустриален стандарт",
     heroLine1: "Рязане и",
-    heroLine2: "Фрезоване",
-    heroLine3: "с CNC",
+    heroLine2: "Фрезоване с",
+    heroLine3: "CNC ROUTER",
     heroDesc: "Специализирани в обработката на еталбонд, HPL, MDF, шперплат и други материали. Прецизно рязане на керамични и ламинат плочи с гарантирано качество.",
 
     // sections
@@ -71,8 +71,8 @@ const translations = {
 
     // footer
     footerBrandDesc: "Прецизна CNC обработка на материали. Вашият доверен партньор за индустриални решения в Пловдив.",
-    addressLine1: "бул. Пещерско шосе 150",
-    addressLine2: "Пловдив 4000, България",
+    addressLine1: "бул. Кукленско шосе №150",
+    addressLine2: "Пловдив 4004, България",
     workingHours: "Пон-Пет: 08:00 - 18:00",
     mapLabel: "Пловдив, България",
     copyright: "© 2026 Etalstyle — CNC Router Solutions",

@@ -80,11 +80,11 @@ const Footer = ({ accentColor, bgColor, borderColor, textDimColor, fontClass }: 
             </li>
             <li className="flex items-center gap-3">
               <span>📞</span>
-              <a href="tel:+359888123456" className="hover:opacity-80 transition-opacity">+359 888 123 456</a>
+              <a href="tel:+359888123456" className="hover:opacity-80 transition-opacity">+359 886 31 36 73</a>
             </li>
             <li className="flex items-center gap-3">
               <span>✉️</span>
-              <a href="mailto:info@etalstyle.bg" className="hover:opacity-80 transition-opacity">info@etalstyle.bg</a>
+              <a href="mailto:etal.stylebg@gmail.com" className="hover:opacity-80 transition-opacity">etal.stylebg@gmail.com</a>
             </li>
             <li className="flex items-center gap-3">
               <span>🕐</span>

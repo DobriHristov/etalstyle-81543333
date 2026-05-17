@@ -8,7 +8,7 @@ const NotFound = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center" style={{ background: "#121212", color: "#f4f4f5" }}>
       <div className="fixed top-0 w-full z-50 flex items-center justify-between px-6 h-16" style={{ background: "rgba(9,9,10,0.95)", backdropFilter: "blur(12px)", borderBottom: "1px solid #27272a" }}>
-        <Link to="/" className="font-bold text-xl tracking-tighter uppercase">ETALSYLE<span style={{ color: "#D67A1A" }}>_</span></Link>
+        <Link to="/" className="font-bold text-xl tracking-tighter uppercase">ETALSTYLE<span style={{ color: "#D67A1A" }}>_</span></Link>
         <LanguageSwitcher accentColor="#D67A1A" bgColor="#121212" borderColor="#2a2a2a" textDimColor="#9a9088" />
       </div>
       <div className="text-center animate-fade-in-up">

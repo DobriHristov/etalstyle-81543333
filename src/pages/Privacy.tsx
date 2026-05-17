@@ -16,7 +16,7 @@ const Privacy = () => {
       <h2 className="text-xl font-bold mt-8 mb-4">4. Бисквитки</h2>
       <p className="mb-4 leading-relaxed opacity-80">Нашият уебсайт използва бисквитки за подобряване на потребителското изживяване. За повече информация, моля вижте нашата <Link to="/cookies" className="underline hover:opacity-70">Политика за бисквитки</Link>.</p>
       <h2 className="text-xl font-bold mt-8 mb-4">5. Вашите права</h2>
-      <p className="mb-4 leading-relaxed opacity-80">Имате право да поискате достъп, коригиране или изтриване на вашите лични данни. За упражняване на тези права, моля свържете се с нас на info@etalstyle.bg.</p>
+      <p className="mb-4 leading-relaxed opacity-80">Имате право да поискате достъп, коригиране или изтриване на вашите лични данни. За упражняване на тези права, моля свържете се с нас на etal.stylebg@gmail.com.</p>
     </>
   );
 
@@ -31,14 +31,14 @@ const Privacy = () => {
       <h2 className="text-xl font-bold mt-8 mb-4">4. Cookies</h2>
       <p className="mb-4 leading-relaxed opacity-80">Our website uses cookies to improve user experience. For more information, please see our <Link to="/cookies" className="underline hover:opacity-70">Cookie Policy</Link>.</p>
       <h2 className="text-xl font-bold mt-8 mb-4">5. Your Rights</h2>
-      <p className="mb-4 leading-relaxed opacity-80">You have the right to request access, correction, or deletion of your personal data. To exercise these rights, please contact us at info@etalstyle.bg.</p>
+      <p className="mb-4 leading-relaxed opacity-80">You have the right to request access, correction, or deletion of your personal data. To exercise these rights, please contact us at etal.stylebg@gmail.com.</p>
     </>
   );
 
   return (
     <div className="min-h-screen" style={{ background: "#121212", color: "#f4f4f5" }}>
       <nav className="fixed top-0 w-full z-50 flex items-center justify-between px-6 h-16" style={{ background: "rgba(9,9,10,0.95)", backdropFilter: "blur(12px)", borderBottom: "1px solid #27272a" }}>
-        <Link to="/" className="font-bold text-xl tracking-tighter uppercase">ETALSYLE<span style={{ color: "#D67A1A" }}>_</span></Link>
+        <Link to="/" className="font-bold text-xl tracking-tighter uppercase">ETALSTYLE<span style={{ color: "#D67A1A" }}>_</span></Link>
         <div className="flex items-center gap-4">
           <LanguageSwitcher accentColor="#D67A1A" bgColor="#121212" borderColor="#2a2a2a" textDimColor="#9a9088" />
         </div>

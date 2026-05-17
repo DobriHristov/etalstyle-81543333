@@ -229,13 +229,13 @@ const Index = () => {
       <CookieConsent />
       <CallButton />
 
-      <div className="min-h-screen font-manrope overflow-x-hidden" style={{ background: C.bg, color: C.text }}>
-        <header className="flex justify-between items-center px-4 sm:px-6 lg:px-8 py-4 sm:py-5 sticky top-0 z-50 gap-3" style={{ background: C.bg, borderBottom: `4px solid ${C.border}` }}>
+      <div className="min-h-screen font-manrope overflow-x-hidden pt-[68px] sm:pt-[76px] lg:pt-[84px]" style={{ background: C.bg, color: C.text }}>
+        <header className="flex justify-between items-center px-4 sm:px-6 lg:px-8 py-4 sm:py-5 fixed top-0 left-0 right-0 z-50 gap-3" style={{ background: C.bg, borderBottom: `4px solid ${C.border}` }}>
           <div className="flex items-center gap-6 xl:gap-12 min-w-0">
-            <a href="#top" className="font-oswald text-2xl sm:text-3xl lg:text-4xl tracking-tighter uppercase font-bold shrink-0">Etalstyle</a>
+            <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="font-oswald text-2xl sm:text-3xl lg:text-4xl tracking-tighter uppercase font-bold shrink-0 cursor-pointer">Etalstyle</a>
             <nav className="hidden lg:flex gap-6 xl:gap-9 text-sm font-semibold tracking-widest uppercase" style={{ color: C.textDim }}>
               {NAV_ITEMS.map(item => (
-                <a key={item.id} href={`#${item.id}`} className="transition-colors"
+                <a key={item.id} href={`#${item.id}`} onClick={(e) => { e.preventDefault(); document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="transition-colors cursor-pointer"
                   onMouseEnter={e => (e.currentTarget.style.color = C.accent)}
                   onMouseLeave={e => (e.currentTarget.style.color = C.textDim)}>{item.label}</a>
               ))}
@@ -243,7 +243,7 @@ const Index = () => {
           </div>
           <div className="flex items-center gap-2 sm:gap-3">
             <LanguageSwitcher accentColor={C.accent} bgColor={C.bg} borderColor={C.border} textDimColor={C.textDim} />
-            <a href="#inquiry" className="hidden sm:inline-block font-oswald text-sm lg:text-lg px-4 lg:px-8 py-2.5 lg:py-3 uppercase tracking-wider font-bold hover:opacity-90 transition-opacity" style={{ background: C.accent, color: C.bg }}>{t.sendInquiry}</a>
+            <a href="#inquiry" onClick={(e) => { e.preventDefault(); document.getElementById("inquiry")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hidden sm:inline-block font-oswald text-sm lg:text-lg px-4 lg:px-8 py-2.5 lg:py-3 uppercase tracking-wider font-bold hover:opacity-90 transition-opacity cursor-pointer" style={{ background: C.accent, color: C.bg }}>{t.sendInquiry}</a>
             <button aria-label="menu" className="lg:hidden p-2" onClick={() => setMenuOpen(o => !o)} style={{ color: C.text }}>
               <div className="w-6 h-0.5 mb-1.5" style={{ background: C.text }} />
               <div className="w-6 h-0.5 mb-1.5" style={{ background: C.text }} />

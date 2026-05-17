@@ -4,6 +4,7 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react()],
+   base: '/etalstyle-81543333/',
   test: {
     environment: "jsdom",
     globals: true,

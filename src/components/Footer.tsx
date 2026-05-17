@@ -26,7 +26,7 @@ const Footer = ({ accentColor, bgColor, borderColor, textDimColor, fontClass }: 
       <div className="w-full h-[350px] relative overflow-hidden">
         <iframe
           title="Etalstyle Plovdiv"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47272.93218684474!2d24.710768!3d42.1497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14acd108bf68cfc3%3A0x398099a9003c550c!2sPlovdiv%2C%20Bulgaria!5e0!3m2!1sen!2s!4v1"
+          src="https://www.google.com/maps?q=%D0%B1%D1%83%D0%BB.+%D0%9A%D1%83%D0%BA%D0%BB%D0%B5%D0%BD%D1%81%D0%BA%D0%BE+%D1%88%D0%BE%D1%81%D0%B5+150%2C+%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2+4004&output=embed"
           className="w-full h-full border-0 grayscale contrast-125 opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
           loading="lazy"
           allowFullScreen

@@ -46,6 +46,9 @@ jobs:
           # Use relative base so assets work on both user sites and project sites
           VITE_BASE_URL: ./
 
+      - name: Add .nojekyll
+        run: touch ./dist/.nojekyll
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

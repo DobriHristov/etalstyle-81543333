@@ -74,7 +74,7 @@ const translations = {
     addressLine1: "бул. Кукленско шосе №150",
     addressLine2: "Пловдив 4004, България",
     workingHours: "Пон-Пет: 08:00 - 18:00",
-    mapLabel: "Пловдив, България",
+    mapLabel: "бул. Кукленско шосе №150, Пловдив 4004",
     copyright: "© 2026 Etalstyle — CNC Router Solutions",
     navigation: "Навигация",
 
@@ -159,10 +159,10 @@ const translations = {
     ceramics: "Ceramics / Laminate",
 
     footerBrandDesc: "Precision CNC material processing. Your trusted partner for industrial solutions in Plovdiv.",
-    addressLine1: "150 Peshtersko Shose Blvd",
-    addressLine2: "Plovdiv 4000, Bulgaria",
+    addressLine1: "150 Kuklensko Shose Blvd",
+    addressLine2: "Plovdiv 4004, Bulgaria",
     workingHours: "Mon-Fri: 08:00 - 18:00",
-    mapLabel: "Plovdiv, Bulgaria",
+    mapLabel: "150 Kuklensko Shose Blvd, Plovdiv 4004",
     copyright: "© 2026 Etalstyle — CNC Router Solutions",
     navigation: "Navigation",
 

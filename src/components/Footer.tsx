@@ -31,7 +31,7 @@ const Footer = ({ accentColor, bgColor, borderColor, textDimColor, fontClass }: 
           loading="lazy"
           allowFullScreen
         />
-        <div className="absolute top-4 left-4 px-4 py-2 text-xs font-bold uppercase tracking-wider z-10" style={{ background: accentColor, color: bgColor }}>
+        <div className="absolute top-4 right-4 px-4 py-2 text-xs font-bold uppercase tracking-wider z-10" style={{ background: accentColor, color: bgColor }}>
           📍 {t.mapLabel}
         </div>
       </div>

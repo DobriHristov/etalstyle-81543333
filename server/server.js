@@ -68,16 +68,16 @@ app.post("/api/send", limiter, async (req, res) => {
       return res.status(400).json({ ok: false, error: "Field too long" });
 
     const html = `
-      <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#121212;color:#F0EAE1;padding:32px;border-left:6px solid #D67A1A">
-        <h2 style="color:#D67A1A;margin:0 0 24px;text-transform:uppercase;letter-spacing:2px">New CNC Inquiry</h2>
+      <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#121212;color:#F0EAE1;padding:32px;border-left:6px solid #D67A1A, border-bottom:6px solid #D67A1A">
+        <h2 style="color:#D67A1A;margin:0 0 24px;text-transform:uppercase;letter-spacing:2px">Запитване за CNC Router</h2>
         <table style="width:100%;border-collapse:collapse">
-          <tr><td style="padding:8px 0;color:#9a9088;width:120px">Name:</td><td style="padding:8px 0"><strong>${escape(name)}</strong></td></tr>
-          <tr><td style="padding:8px 0;color:#9a9088">Email:</td><td style="padding:8px 0"><a href="mailto:${escape(email)}" style="color:#D67A1A">${escape(email)}</a></td></tr>
-          <tr><td style="padding:8px 0;color:#9a9088">Phone:</td><td style="padding:8px 0">${escape(phone || "—")}</td></tr>
-          <tr><td style="padding:8px 0;color:#9a9088">Material:</td><td style="padding:8px 0">${escape(material || "—")}</td></tr>
+          <tr><td style="padding:8px 0;color:#9a9088;width:120px">Име:</td><td style="padding:8px 0"><strong>${escape(name)}</strong></td></tr>
+          <tr><td style="padding:8px 0;color:#9a9088">Имейл:</td><td style="padding:8px 0"><a href="mailto:${escape(email)}" style="color:#D67A1A">${escape(email)}</a></td></tr>
+          <tr><td style="padding:8px 0;color:#9a9088">Телефон:</td><td style="padding:8px 0">${escape(phone || "—")}</td></tr>
+          <tr><td style="padding:8px 0;color:#9a9088">Материал:</td><td style="padding:8px 0">${escape(material || "—")}</td></tr>
         </table>
         <hr style="border:none;border-top:1px solid #2a2a2a;margin:24px 0"/>
-        <p style="color:#9a9088;margin:0 0 8px;text-transform:uppercase;font-size:12px;letter-spacing:1px">Message:</p>
+        <p style="color:#9a9088;margin:0 0 8px;text-transform:uppercase;font-size:12px;letter-spacing:1px">Съобщение:</p>
         <p style="white-space:pre-wrap;line-height:1.6;margin:0">${escape(message)}</p>
       </div>`;
 
@@ -85,9 +85,9 @@ app.post("/api/send", limiter, async (req, res) => {
       from: `"${process.env.MAIL_FROM_NAME || "Website"}" <${process.env.SMTP_USER}>`,
       to: process.env.MAIL_TO,
       replyTo: email,
-      subject: `🔔 CNC Inquiry — ${name}`,
+      subject: `🔔 Etalstyle Запитване — ${name}`,
       html,
-      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "-"}\nMaterial: ${material || "-"}\n\n${message}`,
+      text: `Име: ${name}\Имейл: ${email}\Телефон: ${phone || "-"}\Материал: ${material || "-"}\n\n${message}`,
     });
 
     res.json({ ok: true });

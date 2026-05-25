@@ -312,12 +312,36 @@ const Index = () => {
         </section>
 
         <section id="about" className="p-6 sm:p-10 lg:p-20" style={{ background: C.bg, borderTop: `4px solid ${C.border}` }}>
-          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <Reveal><img src={cncWorkshop} alt="Workshop" loading="lazy" className="w-full aspect-video object-cover" style={{ borderLeft: `8px solid ${C.accent}`, borderBottom: `8px solid ${C.accent}` }} /></Reveal>
+          <div className="max-w-5xl mx-auto">
             <Reveal>
-              <div>
-                <h2 className="font-oswald text-4xl sm:text-5xl uppercase mb-4 sm:mb-6">{t.aboutTitle}</h2>
-                <p className="text-base sm:text-lg leading-relaxed" style={{ color: C.textDim }}>{t.aboutDesc}</p>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+                <img src={cncWorkshop} alt="Workshop" loading="lazy" className="w-full aspect-video object-cover" style={{ borderLeft: `8px solid ${C.accent}`, borderBottom: `8px solid ${C.accent}` }} />
+                <div>
+                  <h2 className="font-oswald text-4xl sm:text-5xl uppercase mb-4 sm:mb-6">{t.aboutTitle}</h2>
+                  <p className="text-sm sm:text-base leading-relaxed mb-6" style={{ color: C.textDim }}>{t.aboutDesc}</p>
+
+                  <p className="font-oswald text-base uppercase tracking-wider mb-2" style={{ color: C.accent }}>{t.aboutServicesTitle}</p>
+                  <ul className="mb-6 space-y-1.5">
+                    {t.aboutServices.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: C.textDim }}>
+                        <span className="mt-1.5 size-1.5 shrink-0 rounded-full" style={{ background: C.accent }} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <p className="font-oswald text-base uppercase tracking-wider mb-2" style={{ color: C.accent }}>{t.aboutWhyTitle}</p>
+                  <ul className="mb-6 space-y-1.5">
+                    {t.aboutWhy.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: C.textDim }}>
+                        <span className="mt-1.5 size-1.5 shrink-0 rounded-full" style={{ background: C.accent }} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <p className="text-sm leading-relaxed" style={{ color: C.textDim }}>{t.aboutGoal}</p>
+                </div>
               </div>
             </Reveal>
           </div>

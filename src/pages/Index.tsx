@@ -312,38 +312,48 @@ const Index = () => {
         </section>
 
         <section id="about" className="p-6 sm:p-10 lg:p-20" style={{ background: C.bg, borderTop: `4px solid ${C.border}` }}>
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <Reveal>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-                <img src={cncWorkshop} alt="Workshop" loading="lazy" className="w-full aspect-video object-cover" style={{ borderLeft: `8px solid ${C.accent}`, borderBottom: `8px solid ${C.accent}` }} />
-                <div>
-                  <h2 className="font-oswald text-4xl sm:text-5xl uppercase mb-4 sm:mb-6">{t.aboutTitle}</h2>
-                  <p className="text-sm sm:text-base leading-relaxed mb-6" style={{ color: C.textDim }}>{t.aboutDesc}</p>
+              <h2 className="font-oswald text-4xl sm:text-5xl uppercase mb-6 sm:mb-10 text-center">{t.aboutTitle}</h2>
+            </Reveal>
 
-                  <p className="font-oswald text-base uppercase tracking-wider mb-2" style={{ color: C.accent }}>{t.aboutServicesTitle}</p>
-                  <ul className="mb-6 space-y-1.5">
-                    {t.aboutServices.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: C.textDim }}>
-                        <span className="mt-1.5 size-1.5 shrink-0 rounded-full" style={{ background: C.accent }} />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <p className="font-oswald text-base uppercase tracking-wider mb-2" style={{ color: C.accent }}>{t.aboutWhyTitle}</p>
-                  <ul className="mb-6 space-y-1.5">
-                    {t.aboutWhy.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: C.textDim }}>
-                        <span className="mt-1.5 size-1.5 shrink-0 rounded-full" style={{ background: C.accent }} />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+              <Reveal>
+                <div className="space-y-6">
+                  <img src={cncWorkshop} alt="Workshop" loading="lazy" className="w-full aspect-video object-cover" style={{ borderLeft: `8px solid ${C.accent}`, borderBottom: `8px solid ${C.accent}` }} />
+                  <p className="text-sm sm:text-base leading-relaxed" style={{ color: C.textDim }}>{t.aboutDesc}</p>
                   <p className="text-sm leading-relaxed" style={{ color: C.textDim }}>{t.aboutGoal}</p>
                 </div>
-              </div>
-            </Reveal>
+              </Reveal>
+
+              <Reveal>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="p-6" style={{ background: C.surface, borderTop: `3px solid ${C.accent}` }}>
+                    <h3 className="font-oswald text-lg uppercase tracking-wider mb-4" style={{ color: C.accent }}>{t.aboutServicesTitle}</h3>
+                    <ul className="space-y-2.5">
+                      {t.aboutServices.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2.5 text-sm leading-relaxed" style={{ color: C.textDim }}>
+                          <span className="mt-1.5 size-1.5 shrink-0 rounded-full" style={{ background: C.accent }} />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="p-6" style={{ background: C.surface, borderTop: `3px solid ${C.accent}` }}>
+                    <h3 className="font-oswald text-lg uppercase tracking-wider mb-4" style={{ color: C.accent }}>{t.aboutWhyTitle}</h3>
+                    <ul className="space-y-2.5">
+                      {t.aboutWhy.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2.5 text-sm leading-relaxed" style={{ color: C.textDim }}>
+                          <span className="mt-1.5 size-1.5 shrink-0 rounded-full" style={{ background: C.accent }} />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
           </div>
         </section>
 

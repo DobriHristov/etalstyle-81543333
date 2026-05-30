@@ -46,8 +46,6 @@ const Reveal = ({ children, className = "" }: { children: React.ReactNode; class
   return <div ref={ref} className={`reveal ${className}`}>{children}</div>;
 };
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
-
 const InquiryForm = () => {
   const [sent, setSent] = useState(false);
   const [accepted, setAccepted] = useState(false);
@@ -63,7 +61,7 @@ const InquiryForm = () => {
     setError(null);
     const fd = new FormData(e.currentTarget);
     try {
-      const res = await fetch(`${API_URL}/api/send`, {
+      const res = await fetch("/api/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

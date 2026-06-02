@@ -1,0 +1,22 @@
+{
+  "name": "Еталстил - CNC рязане и фрезоване",
+  "short_name": "Еталстил",
+  "description": "Специализирана фирма за CNC рязане и фрезоване на еталбонд, HPL, MDF, PVC, плексиглас в Пловдив",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#D67A1A",
+  "lang": "bg",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

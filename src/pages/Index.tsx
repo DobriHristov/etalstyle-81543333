@@ -146,13 +146,11 @@ const VideoSection = () => {
 const StatsBar = () => {
   const { t } = useLanguage();
   const stats = [
-    { value: "500+", label: t.statProjects },
     { value: "±0.01mm", label: t.statPrecision },
-    { value: "15+", label: t.statYears },
     { value: "24/7", label: t.statSupport },
   ];
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4" style={{ borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}` }}>
+    <div className="grid grid-cols-2" style={{ borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}` }}>
       {stats.map((s, i) => (
         <Reveal key={s.label}>
           <div className="p-6 sm:p-8 text-center h-full" style={{ borderRight: i < 3 ? `1px solid ${C.border}` : "none", background: C.surface }}>
@@ -260,7 +258,7 @@ const Index = () => {
         )}
 
         <section className="flex flex-col lg:flex-row min-h-[80vh]">
-          <div className="flex-1 p-6 sm:p-10 lg:p-24 flex flex-col justify-center gap-5 sm:gap-6" style={{ borderRight: `4px solid ${C.border}` }}>
+          <div className="w-full lg:w-1/2 p-6 sm:p-10 lg:p-24 flex flex-col justify-center gap-5 sm:gap-6" style={{ borderRight: `1px solid ${C.border}` }}>
             <div className="flex gap-4 items-center animate-fade-in">
               <div className="size-3" style={{ background: C.accent }} />
               <span className="font-oswald uppercase tracking-[0.2em] text-xs sm:text-sm" style={{ color: C.textDim }}>{t.industrialStandard}</span>
@@ -270,7 +268,7 @@ const Index = () => {
             </h1>
             <p className="text-base sm:text-lg max-w-[48ch] font-medium leading-relaxed mt-2 sm:mt-4 animate-fade-in-up delay-200" style={{ color: C.textDim }}>{t.heroDesc}</p>
           </div>
-          <div className="flex-1 p-6 sm:p-8 lg:p-16 flex items-center justify-center" style={{ background: C.surface }}>
+          <div className=" w-full lg:w-1/2 p-6 sm:p-8 lg:p-16 flex items-center justify-center" style={{ background: C.surface }}>
             <div className="relative w-full animate-scale-in delay-300" style={{ background: C.bg, borderLeft: `8px solid ${C.accent}`, borderBottom: `8px solid ${C.accent}`, padding: "1rem" }}>
               <video src={cncCuttingVideo} autoPlay muted loop playsInline className="w-full aspect-[4/3] object-cover grayscale contrast-125 brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-700" />
             </div>

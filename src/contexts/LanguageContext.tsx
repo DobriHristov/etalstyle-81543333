@@ -64,14 +64,14 @@ const translations = {
     matHplDesc: "Обработка на високоустойчиви плоскости за екстериор и интериор. Чист срез без обгаряне на ръбовете, дори при висока плътност.",
     matMdfTitle: "MDF & Шперплат",
     matMdfSub: "Wood Fiber & Veneer",
-    matMdfDesc: "Комплексно 2.5D и 3D фрезоване на детайли за мебелната индустрия. Нестинг разкрой за максимална оптимизация.",
+    matMdfDesc: "Комплексно 2D фрезоване на детайли за мебелната индустрия. Нестинг разкрой за максимална оптимизация.",
     matCeramicTitle: "Керамика",
     matCeramicSub: "Porcelain & Tile",
     matCeramicDesc: "Диамантено рязане на широкоформатен гранитогрес и керамични плочи. Водно охлаждане за перфектен ръб без микропукнатини.",
 
     // video labels
     videoCuttingDesc: "Прецизно рязане на алуминиеви композитни панели",
-    videoMillingDesc: "3D фрезоване на MDF детайли",
+    videoMillingDesc: "2D фрезоване на MDF детайли",
 
     // form
     name: "Вашето име *",
@@ -172,13 +172,13 @@ const translations = {
     matHplDesc: "Machining of high-strength sheets for exterior and interior. Clean edges with no burning, even at high density.",
     matMdfTitle: "MDF & Plywood",
     matMdfSub: "Wood Fiber & Veneer",
-    matMdfDesc: "Complex 2.5D and 3D milling of furniture-industry parts. Nesting layouts for maximum material optimization.",
+    matMdfDesc: "Complex 2D milling of furniture-industry parts. Nesting layouts for maximum material optimization.",
     matCeramicTitle: "Ceramics",
     matCeramicSub: "Porcelain & Tile",
     matCeramicDesc: "Diamond cutting of large-format porcelain and ceramic tiles. Water cooling for a perfect edge without micro-cracks.",
 
     videoCuttingDesc: "Precision cutting of aluminium composite panels",
-    videoMillingDesc: "3D milling of MDF parts",
+    videoMillingDesc: "2D milling of MDF parts",
 
     name: "Your name *",
     email: "Email *",
